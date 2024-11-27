@@ -27,7 +27,7 @@ hadoop fs -copyFromLocal ./input /tmp
 
 Execute in the command line the following command:
 
-hadoop jar build/libs/hadoop-apps-0.1.0.jar org.ivan.mapreduce.RemoveFirstColumn.Driver /tmp/input /tmp/output
+hadoop jar build/libs/hadoop-apps-0.1.0.jar org.ivan.mapreduce.RemoveFirstColumn.Driver /tmp/input.csv /tmp/output
 
 After some time you will see that the job successfully finished. You can see the output by using the following command:
 

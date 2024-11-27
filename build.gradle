@@ -13,8 +13,12 @@ jar {
  
     baseName = 'hadoop-apps'
     version = '0.1.0'
-   // note this builds one fat jar and it is not recommended for production use - just for illustration purpose
-   from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    // note this builds one fat jar and it is not recommended for production use - just for illustration purpose
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    tasks.withType(Jar) {
+        // Ignorar archivos duplicados de META-INF
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    }
 }
 
 repositories {
@@ -41,6 +45,9 @@ dependencies {
 
     // json library for tweets
     implementation("com.google.code.gson:gson:2.2.4")
+    implementation("com.opencsv:opencsv:5.5.2")
+    implementation("log4j:log4j:1.2.17")
+    implementation("org.apache.commons:commons-lang3:3.12.0")
 
     testImplementation group: 'junit', name: 'junit', version: '4.+'
 }
